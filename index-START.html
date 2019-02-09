@@ -54,20 +54,19 @@
   </div>
 
 <script>
-  const navEl = document.querySelector("#main")
-  const logo = navEl.querySelector("li.logo")
-  console.log(logo)
-  window.addEventListener("scroll", stickOrUnstick)
+  const navEl = document.querySelector('#main')
+  const logo = navEl.querySelector('li.logo')
+  window.addEventListener('scroll', stickOrUnstick)
   const navOffset = navEl.offsetTop
 
   function stickOrUnstick (event) {
-    if (window.scrollY > navOffset) {
-      navEl.style.position = 'fixed'
-      logo.style.maxWidth = 'none'
+    if (window.scrollY >= navOffset) {
+      document.body.style.paddingTop = `${navEl.offsetHeight}px` 
+      document.body.classList.add('fixed-nav')
     } else if (window.scrollY < navOffset) {
+      document.body.classList.remove('fixed-nav')
+      document.body.style.paddingTop = '0'
       navEl.offsetTop = navOffset
-      navEl.style.position = 'relative'
-      logo.style.maxWidth = 0
     }
   }
 </script>

@@ -55,17 +55,19 @@
 
 <script>
   const navEl = document.querySelector("#main")
+  const logo = navEl.querySelector("li.logo")
+  console.log(logo)
   window.addEventListener("scroll", stickOrUnstick)
   const navOffset = navEl.offsetTop
 
   function stickOrUnstick (event) {
     if (window.scrollY > navOffset) {
-      console.log("fixed")
       navEl.style.position = 'fixed'
+      logo.style.maxWidth = 'none'
     } else if (window.scrollY < navOffset) {
-      console.log("relative")
       navEl.offsetTop = navOffset
       navEl.style.position = 'relative'
+      logo.style.maxWidth = 0
     }
   }
 </script>
